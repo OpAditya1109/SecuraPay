@@ -68,7 +68,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch(`${process.env.REACT_APP_API_URL}/auth/get-user`, {
+      fetch(`http://13.232.251.240:8080/auth/get-user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

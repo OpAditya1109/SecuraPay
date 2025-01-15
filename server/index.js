@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 const allowedOrigins = [process.env.FRONTEND_URL]; // Use FRONTEND_URL from .env
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: '*',
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Allow cookies and headers
   })
