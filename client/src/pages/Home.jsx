@@ -27,7 +27,6 @@ const Home = () => {
             }
           }, 3000); // Hide after 3 seconds
         })
-
         .catch((err) => {
           console.error(err);
           alert("Error: " + err); // Display error for debugging
@@ -69,7 +68,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch("http://localhost:8080/auth/get-user", {
+      fetch(`${process.env.REACT_APP_API_URL}/auth/get-user`, {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -99,9 +98,7 @@ const Home = () => {
       // If no token is found, redirect to login
       navigate("/login", { replace: true });
     }
-  
-}, [navigate]); // Empty dependency array ensures it runs on component mount only
-
+  }, [navigate]); // Empty dependency array ensures it runs on component mount only
 
   return (
     <div id="container">
@@ -132,131 +129,18 @@ const Home = () => {
             <p className="tez__text">Tap for Secure Mode</p>
           </div>
         </main>
-        <section className="slider">
-          <div className="logo-wrap">
-            <img
-              className="logo-wrap__img"
-              src={assets.logo2}
-              alt="google pay logo"
-            />
-          </div>
-          <div className="slider__contact">
-            <div className="contact-item">
-              <div className="contact-item__photo">₹</div>
-              <p className="contact-item__name">New</p>
-            </div>
-            <div className="contact-item">
-              <div
-                className="contact-item__photo contact-item__photo--alert"
-                style={{ backgroundColor: "purple" }}
-              >
-                <i className="ri-at-line"></i>
-              </div>
-              <p className="contact-item__name">Pay UPI ID</p>
-            </div>
-            <div className="contact-item">
-              <div
-                className="contact-item__photo contact-item__photo--alert"
-                style={{ backgroundColor: "rgb(241, 102, 52)" }}
-              >
-                <i className="ri-bill-line"></i>
-              </div>
-              <p className="contact-item__name">Pay Bills </p>
-            </div>
-            <div className="contact-item">
-              <div
-                className="contact-item__photo"
-                style={{ backgroundColor: "rgb(56, 56, 173)" }}
-              >
-                <i className="ri-bank-line"></i>
-              </div>
-              <p className="contact-item__name">Bank Transfer</p>
-            </div>
-          </div>
+      </div>
 
-          <div className="slider__business">
-            <p className="business-head">Businesses</p>
-            <p className="business-subhead">Frequent and smart suggestions</p>
-            <div className="business-list">
-              <div className="business-item">
-                <div
-                  className="business-item__photo"
-                  style={{ backgroundColor: "orangered" }}
-                >
-                  I
-                </div>
-                <p className="business-item__name">India</p>
-              </div>
-              <div className="business-item">
-                <div
-                  className="business-item__photo"
-                  style={{ backgroundColor: "rgb(231, 231, 231)" }}
-                />
-              </div>
-              <div className="business-item">
-                <div
-                  className="business-item__photo"
-                  style={{ backgroundColor: "rgb(231, 231, 231)" }}
-                />
-              </div>
-            </div>
-          </div>
-          <div className="slider__promo">
-            <p className="promo-head">Promotions</p>
-            <div className="promo-list">
-              <div className="promo-item">
-                <img
-                  className="promo-item__photo"
-                  src={assets.oyo}
-                  alt="oyo rewards"
-                />
-                <p className="promo-item__name">OYO</p>
-              </div>
-              <div className="promo-item">
-                <img
-                  className="promo-item__photo"
-                  src={assets.grofers}
-                  alt="grofers rewards"
-                />
-                <p className="promo-item__name">Grofers</p>
-              </div>
-            </div>
-          </div>
-          <div className="slider__options">
-            <div className="option">
-              <ion-icon className="option__icon" name="refresh" />
-              <p className="option__text">All transactions</p>
-            </div>
-            <div className="option">
-              <ion-icon
-                className="option__icon check-bal"
-                name="card-outline"
-              />
-              <p className="option__text">Check balance</p>
-            </div>
-            <div className="option" >
-              <ion-icon
-                className="option__icon"
-                name="card-outline"
-              />
-              <p className="option__text">Create Wallet</p>
-            </div>
-          </div>
-        </section>
+      <video
+        id="video"
+        style={{ width: "100%", height: "100%" }}
+        className="video-stream"
+        hidden
+      ></video>
+
+      <div className="qr-result">
+        {qrCodeResult && <div className="qr-result__text">{qrCodeResult}</div>}
       </div>
-      <div id="scanner" style={{ display: isScanning ? "block" : "none" }}>
-        <button id="close-button" onClick={stopScanning}>
-          <i className="ri-close-large-line" />
-        </button>
-        <video id="video" style={{ width: "100%", height: "100%" }} />
-        <div className="scanner-frame">
-          <div className="scanner-border top-left" />
-          <div className="scanner-border top-right" />
-          <div className="scanner-border bottom-left" />
-          <div className="scanner-border bottom-right" />
-        </div>
-      </div>
-      {qrCodeResult && <div className="qr-result">QR Code: {qrCodeResult}</div>}
     </div>
   );
 };

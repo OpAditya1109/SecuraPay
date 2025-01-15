@@ -35,7 +35,7 @@ const Signup = () => {
 
     try {
       // Step 1: Sign up the user (create account)
-      const url = "http://localhost:8080/auth/signup";
+      const url = `${process.env.REACT_APP_API_URL}/auth/signup`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -51,13 +51,16 @@ const Signup = () => {
 
       if (success) {
         // Step 2: Send OTP to the user's email
-        const otpResponse = await fetch("http://localhost:8080/auth/send-otp", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email }), // Send email to send OTP
-        });
+        const otpResponse = await fetch(
+          `${process.env.REACT_APP_API_URL}/auth/send-otp`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ email }), // Send email to send OTP
+          }
+        );
 
         const otpResult = await otpResponse.json();
         console.log(otpResult); // Log the OTP result

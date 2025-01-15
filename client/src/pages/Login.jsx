@@ -4,7 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "../CSS/Signup.css";
 import { handleError, handleSuccess } from "../utilis";
-import axios from "axios"; // <-- Missing import for axios
+import axios from "axios"; // <-- Added missing import for axios
 
 const Login = () => {
   const [loginInfo, setLoginInfo] = useState({
@@ -30,7 +30,7 @@ const Login = () => {
     }
     try {
       setLoading(true); // Start loading
-      const url = `http://localhost:8080/auth/login`;
+      const url = `${process.env.REACT_APP_API_URL}/auth/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -64,29 +64,28 @@ const Login = () => {
     }
   };
 
- const handleResendOtp = async () => {
-  try {
-    setLoading(true); // Set loading state while resending OTP
-    const response = await axios.post("http://localhost:8080/auth/resend-otp", { email: loginInfo.email });
+  const handleResendOtp = async () => {
+    try {
+      setLoading(true); // Set loading state while resending OTP
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/resend-otp`,
+        { email: loginInfo.email }
+      );
 
-    if (response.data.redirectToOtpVerification) {
-      // Redirect to OTP verification page with email as state
-      navigate("/otp-verification", { state: { email: loginInfo.email } });
-    } else {
-      toast.success(response.data.message); // Show the message if needed
-      navigate("/otp-verification", { state: { email: loginInfo.email } });
+      if (response.data.redirectToOtpVerification) {
+        // Redirect to OTP verification page with email as state
+        navigate("/otp-verification", { state: { email: loginInfo.email } });
+      } else {
+        toast.success(response.data.message); // Show the message if needed
+        navigate("/otp-verification", { state: { email: loginInfo.email } });
+      }
+      setLoading(false); // Stop loading after action
+    } catch (error) {
+      setLoading(false); // Stop loading in case of error
+      console.error("Error resending OTP:", error);
+      toast.error("Error resending OTP.");
     }
-    setLoading(false); // Stop loading after action
-  } catch (error) {
-    setLoading(false); // Stop loading in case of error
-    console.error("Error resending OTP:", error);
-    toast.error("Error resending OTP.");
-  }
-};
-
-  
-
- 
+  };
 
   return (
     <div className="container-body">

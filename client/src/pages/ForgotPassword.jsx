@@ -34,7 +34,7 @@ const ForgotPassword = () => {
 
     try {
       // The API endpoint for the forgot-password route
-      const url = `http://localhost:8080/auth/forgot-password`;
+      const url = `${process.env.REACT_APP_API_URL}/auth/forgot-password`;
 
       // Make the API request to trigger password reset functionality
       const response = await fetch(url, {

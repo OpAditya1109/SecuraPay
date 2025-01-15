@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // import styles
+import "react-toastify/dist/ReactToastify.css"; // Import styles
 
 const OtpVerification = () => {
   const [otp, setOtp] = useState("");
@@ -32,7 +32,7 @@ const OtpVerification = () => {
     }
 
     try {
-      const url = "http://localhost:8080/auth/verify-otp";
+      const url = `${process.env.REACT_APP_API_URL}/auth/verify-otp`; // Use environment variable for the URL
       const response = await fetch(url, {
         method: "POST",
         headers: {
