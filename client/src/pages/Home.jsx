@@ -13,30 +13,35 @@ const Home = () => {
       const video = document.getElementById("video");
       const codeReader = new BrowserQRCodeReader();
 
-      // Start scanning from the camera
-      codeReader
-        .decodeFromInputVideoDevice(undefined, "video")
-        .then((result) => {
-          console.log(result);
-          setQrCodeResult(result.text); // Update QR code result state
-          stopScanning(); // Stop scanning once the QR code is read
-          setTimeout(() => {
-            const qrResultElement = document.querySelector(".qr-result");
-            if (qrResultElement) {
-              qrResultElement.classList.add("hide");
-            }
-          }, 3000); // Hide after 3 seconds
-        })
+      // Check if getUserMedia is available
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        codeReader
+          .decodeFromInputVideoDevice(undefined, "video")
+          .then((result) => {
+            console.log(result);
+            setQrCodeResult(result.text); // Update QR code result state
+            stopScanning(); // Stop scanning once the QR code is read
+            setTimeout(() => {
+              const qrResultElement = document.querySelector(".qr-result");
+              if (qrResultElement) {
+                qrResultElement.classList.add("hide");
+              }
+            }, 3000); // Hide after 3 seconds
+          })
+          .catch((err) => {
+            console.error(err);
+            alert("Error: " + err); // Display error for debugging
+          });
 
-        .catch((err) => {
-          console.error(err);
-          alert("Error: " + err); // Display error for debugging
+        // Ensure the video plays (this might not work due to autoplay restrictions)
+        video.play().catch((error) => {
+          console.error("Video play failed:", error); // Log error if autoplay fails
         });
-
-      // Ensure the video plays (this might not work due to autoplay restrictions)
-      video.play().catch((error) => {
-        console.error("Video play failed:", error); // Log error if autoplay fails
-      });
+      } else {
+        alert(
+          "Camera access is not supported or denied. Please check your settings."
+        );
+      }
     }
   }, [isScanning]);
 
@@ -59,8 +64,6 @@ const Home = () => {
   };
 
   // Fetch UserName
-
-  // Example to fetch username from backend
   const [name, setName] = useState("");
   const [username, setUsername] = useState(""); // Add a state for the username
   const navigate = useNavigate(); // Use the history hook to redirect
@@ -99,9 +102,7 @@ const Home = () => {
       // If no token is found, redirect to login
       navigate("/login", { replace: true });
     }
-  
-}, [navigate]); // Empty dependency array ensures it runs on component mount only
-
+  }, [navigate]); // Empty dependency array ensures it runs on component mount only
 
   return (
     <div id="container">
@@ -234,11 +235,8 @@ const Home = () => {
               />
               <p className="option__text">Check balance</p>
             </div>
-            <div className="option" >
-              <ion-icon
-                className="option__icon"
-                name="card-outline"
-              />
+            <div className="option">
+              <ion-icon className="option__icon" name="card-outline" />
               <p className="option__text">Create Wallet</p>
             </div>
           </div>
@@ -256,7 +254,11 @@ const Home = () => {
           <div className="scanner-border bottom-right" />
         </div>
       </div>
-      {qrCodeResult && <div className="qr-result">QR Code: {qrCodeResult}</div>}
+      {qrCodeResult && (
+        <div className="qr-result">
+          <p>QR Code Result: {qrCodeResult}</p>
+        </div>
+      )}
     </div>
   );
 };

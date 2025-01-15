@@ -65,7 +65,7 @@ router.post("/forgot-password", (req, res) => {
       user.save();
 
       // Generate a password reset link with the user ID
-      const resetLink = `${process.env.FRONTEND_URL}/reset-password/${user._id}`;
+      const resetLink = `http://13.232.251.240:8080/reset-password/${user._id}`;
 
       // Create the email transport
       let transporter = nodemailer.createTransport({
@@ -265,7 +265,6 @@ router.post("/verify-otp", async (req, res) => {
   }
 });
 
-
 // Route: Resend OTP
 router.post("/resend-otp", async (req, res) => {
   const { email } = req.body;
@@ -296,7 +295,7 @@ router.post("/resend-otp", async (req, res) => {
       const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: process.env.EMAIL_USER, 
+          user: process.env.EMAIL_USER,
           pass: process.env.EMAIL_PASS,
         },
       });
@@ -331,6 +330,5 @@ router.post("/resend-otp", async (req, res) => {
     });
   }
 });
-
 
 module.exports = router;
