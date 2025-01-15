@@ -19,29 +19,27 @@ const ResetPasswordPage = () => {
 
     // Check if the passwords match
     if (newPassword !== confirmPassword) {
-      console.log("Passwords do not match"); // Debugging
       handleError("Passwords do not match"); // Show error notification
       return;
     }
 
     setLoading(true);
 
+    // Use the environment variable for the base URL
+    const apiUrl = `http://13.232.251.240:8080/auth/reset-password/${userId}`;
+
     // Send request to reset the password
     axios
-      .post(`http://localhost:8080/auth/reset-password/${userId}`, {
-        newPassword: newPassword,
-      })
+      .post(apiUrl, { newPassword })
       .then((response) => {
-        console.log("Response:", response); // Debugging
         handleSuccess("Password reset successfully!"); // Show success notification
 
         // Delay navigation for the toast to display
         setTimeout(() => {
-          navigate("/"); // This will navigate to the homepage after a delay
+          navigate("/"); // Navigate to the homepage after a delay
         }, 2000); // Delay of 2 seconds
       })
       .catch((error) => {
-        console.error("Error:", error); // Debugging
         handleError(
           error.response?.data?.message || "Failed to reset password"
         ); // Show error notification
@@ -76,7 +74,6 @@ const ResetPasswordPage = () => {
         <button type="submit" disabled={loading}>
           {loading ? "Resetting..." : "Reset Password"}
         </button>
-      
         <ToastContainer />
       </form>
     </div>

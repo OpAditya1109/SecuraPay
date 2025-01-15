@@ -12,15 +12,29 @@ const PORT = process.env.PORT || 8080;
 // Import the cron job for user cleanup
 require("./corn_job/UserCleanup"); // Adjust the path based on your file structure
 
+// Middleware for parsing JSON and enabling CORS
+app.use(bodyParser.json());
+
+// Configure CORS to allow requests from your frontend
+const allowedOrigins = [process.env.FRONTEND_URL]; // Use FRONTEND_URL from .env
+app.use(
+  cors({
+    origin: '*',
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // Allow cookies and headers
+  })
+);
+
+// Health check route
 app.get("/ping", (req, res) => {
   res.send("PONG");
 });
 
-app.use(bodyParser.json());
-app.use(cors());
+// Routes
 app.use("/auth", AuthRouter);
 app.use("/products", ProductRouter);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on ${PORT}`);
+// Start the server, listening on all network interfaces
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server is running at http://0.0.0.0:${PORT}`);
 });

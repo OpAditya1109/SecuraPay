@@ -65,7 +65,7 @@ router.post("/forgot-password", (req, res) => {
       user.save();
 
       // Generate a password reset link with the user ID
-      const resetLink = `http://localhost:5173/reset-password/${user._id}`;
+      const resetLink = `${process.env.FRONTEND_URL}/reset-password/${user._id}`;
 
       // Create the email transport
       let transporter = nodemailer.createTransport({
