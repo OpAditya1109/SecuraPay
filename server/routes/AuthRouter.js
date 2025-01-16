@@ -65,7 +65,7 @@ router.post("/forgot-password", (req, res) => {
       user.save();
 
       // Generate a password reset link with the user ID
-      const resetLink = `https://13.232.251.240:8080/reset-password/${user._id}`;
+      const resetLink = `http://13.232.251.240:8080/reset-password/${user._id}`;
 
       // Create the email transport
       let transporter = nodemailer.createTransport({
