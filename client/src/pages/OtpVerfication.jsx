@@ -32,7 +32,7 @@ const OtpVerification = () => {
     }
 
     try {
-      const url = `https://13.232.251.240:8080/auth/verify-otp`; // Use environment variable for the URL
+      const url = `http://13.232.251.240:8080/auth/verify-otp`; // Use environment variable for the URL
       const response = await fetch(url, {
         method: "POST",
         headers: {

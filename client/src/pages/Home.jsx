@@ -72,7 +72,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch("https://13.232.251.240:8080/auth/get-user", {
+      fetch("http://13.232.251.240:8080/auth/get-user", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,

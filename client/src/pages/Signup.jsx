@@ -35,7 +35,7 @@ const Signup = () => {
 
     try {
       // Step 1: Sign up the user (create account)
-      const url = `https://13.232.251.240:8080/auth/signup`;
+      const url = `http://13.232.251.240:8080/auth/signup`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -52,7 +52,7 @@ const Signup = () => {
       if (success) {
         // Step 2: Send OTP to the user's email
         const otpResponse = await fetch(
-          `https://13.232.251.240:8080/auth/send-otp`,
+          `http://13.232.251.240:8080/auth/send-otp`,
           {
             method: "POST",
             headers: {
