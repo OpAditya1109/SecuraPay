@@ -30,7 +30,7 @@ const Login = () => {
     }
     try {
       setLoading(true); // Start loading
-      const url = `http://13.232.251.240:8080/auth/login`;
+      const url = `https://13.232.251.240:8080/auth/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -68,7 +68,7 @@ const Login = () => {
     try {
       setLoading(true); // Set loading state while resending OTP
       const response = await axios.post(
-        `http://13.232.251.240:8080/auth/resend-otp`,
+        `https://13.232.251.240:8080/auth/resend-otp`,
         { email: loginInfo.email }
       );
 

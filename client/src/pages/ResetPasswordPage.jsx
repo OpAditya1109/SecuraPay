@@ -26,7 +26,7 @@ const ResetPasswordPage = () => {
     setLoading(true);
 
     // Use the environment variable for the base URL
-    const apiUrl = `http://13.232.251.240:8080/auth/reset-password/${userId}`;
+    const apiUrl = `https://13.232.251.240:8080/auth/reset-password/${userId}`;
 
     // Send request to reset the password
     axios
