@@ -16,10 +16,11 @@ require("./corn_job/UserCleanup"); // Adjust the path based on your file structu
 app.use(bodyParser.json());
 
 // Configure CORS to allow requests from your frontend
-const allowedOrigins = [process.env.FRONTEND_URL]; // Use FRONTEND_URL from .env
+const allowedOrigins = ["https://securapay.mooo.com"]; // Updated domain
+
 app.use(
   cors({
-    origin: '*',
+    origin: allowedOrigins, // Only allow requests from your frontend domain
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, // Allow cookies and headers
   })
@@ -34,7 +35,9 @@ app.get("/ping", (req, res) => {
 app.use("/auth", AuthRouter);
 app.use("/products", ProductRouter);
 
-// Start the server, listening on all network interfaces
+// Start the server (using HTTP or HTTPS)
+// If you're using Nginx for SSL termination, you can keep this as is:
 app.listen(PORT, "0.0.0.0", () => {
   console.log(`Server is running at http://0.0.0.0:${PORT}`);
 });
+

@@ -72,7 +72,7 @@ const Home = () => {
     const token = localStorage.getItem("token");
 
     if (token) {
-      fetch("http://13.232.251.240:8080/auth/get-user", {
+      fetch("https://securapay.mooo.com/auth/get-user", {
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -169,9 +169,9 @@ const Home = () => {
                 className="contact-item__photo"
                 style={{ backgroundColor: "rgb(56, 56, 173)" }}
               >
-                <i className="ri-bank-line"></i>
+                <i class="ri-wallet-2-line"></i>
               </div>
-              <p className="contact-item__name">Bank Transfer</p>
+              <p className="contact-item__name">Wallet Transfer</p>
             </div>
           </div>
 

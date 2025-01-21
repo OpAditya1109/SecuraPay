@@ -35,7 +35,7 @@ const Signup = () => {
 
     try {
       // Step 1: Sign up the user (create account)
-      const url = `http://13.232.251.240:8080/auth/signup`;
+      const url = `https://securapay.mooo.com/auth/signup`;
       const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -52,7 +52,7 @@ const Signup = () => {
       if (success) {
         // Step 2: Send OTP to the user's email
         const otpResponse = await fetch(
-          `http://13.232.251.240:8080/auth/send-otp`,
+          `https://securapay.mooo.com/auth/send-otp`,
           {
             method: "POST",
             headers: {
