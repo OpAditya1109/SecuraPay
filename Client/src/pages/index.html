@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/ionicons@5.1.2/dist/ionicons.js"></script>
+    <link rel="icon" type="image/x-png" href="images/favicon.png">
+<link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+    rel="stylesheet"
+/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> <script src="https://unpkg.com/@zxing/library@latest"></script>
+    <title>Secure Pay</title>
+</head>
+<body>
+<div id="main">
+    <header class="header pd">
+        <div class="header__user">
+            <img class="photo" src="./images/profile.png" alt="user profile">
+            <div class="info">
+                <div class="info__username">Aditya Yadav</div>
+                <div class="info__upiid">AdityaYadav@gpayupi</div>
+            </div>
+        </div>
+        <div class="header__option">
+            <ion-icon class="option-icon" name="ellipsis-vertical"></ion-icon>
+        </div>
+    </header>
+
+    <main class="main">
+
+        <div class="tez">
+            <div class="tez__circle">
+               
+        <button id="scanner_click" class="scanner_click"><img src="images/favicon.png" alt=""></button>
+            </div>
+            <p class="tez__text">Tap for Secure Mode</p>
+        </div>
+
+    </main>
+
+    <section class="slider">
+        
+        <div class="logo-wrap">
+            <img class="logo-wrap__img" src="./images/logo.png" alt="google pay logo">
+        </div>
+
+        <div class="slider__contact">
+
+            <div class="contact-item">
+                <div class="contact-item__photo">&#x20B9;</div>
+                <p class="contact-item__name">New</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo contact-item__photo--alert" style="background-color: purple">D</div>
+                <p class="contact-item__name">Dhairya</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo contact-item__photo--alert" style="background-color: rgb(241, 102, 52)">H</div>
+                <p class="contact-item__name">Hrithik</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo" style="background-color: rgb(56, 56, 173)">E</div>
+                <p class="contact-item__name">Esha</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo" style="background-color: green">R</div>
+                <p class="contact-item__name">Rudra</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo" style="background-color: rgb(115, 115, 228)">A</div>
+                <p class="contact-item__name">Aditya</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo" style="background-color: purple">R</div>
+                <p class="contact-item__name">Ronak</p>
+            </div>
+
+            <div class="contact-item">
+                <div class="contact-item__photo" style="background-color: darkgoldenrod">J</div>
+                <p class="contact-item__name">James</p>
+            </div>
+        </div>
+
+        <div class="slider__business">
+            <p class="business-head">Businesses</p>
+            <p class="business-subhead">Frequent and smart suggestions</p>
+
+            <div class="business-list">
+
+                <div class="business-item">
+                    <div class="business-item__photo" style="background-color: orangered;">I</div>
+                    <p class="business-item__name">India</p>
+                </div>
+
+                <div class="business-item">
+                    <div class="business-item__photo" style="background-color: rgb(231, 231, 231)"></div>
+                </div>
+
+                <div class="business-item">
+                    <div class="business-item__photo" style="background-color: rgb(231, 231, 231)"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="slider__promo">
+            <p class="promo-head">Promotions</p>
+            <div class="promo-list">
+
+                <div class="promo-item">
+                    <img class="promo-item__photo" src="./images/oyo.png" alt="oyo rewards">
+                    <p class="promo-item__name">OYO</p>
+                </div>
+
+                <div class="promo-item">
+                    <img class="promo-item__photo" src="./images/grofers.jpg" alt="grofers rewards">
+                    <p class="promo-item__name">Grofers</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="slider__options">
+
+            <div class="option">
+                <ion-icon class="option__icon" name="refresh"></ion-icon>
+                <p class="option__text">All transactions</p>
+            </div>
+
+            <div class="option">
+                <ion-icon class="option__icon" name="card-outline"></ion-icon>
+                <p class="option__text">Check balance</p>
+            </div>
+
+            <div class="option">
+                <ion-icon class="option__icon" name="heart"></ion-icon>
+                <div class="text-wrap">
+                    <p class="option__text">Invite a friend</p>
+                    <p class="option__subtext">Get &#x20B9;51 after each friend's first payment</p>
+                </div>
+            </div>
+        </div>
+    </section>
+ </div>
+
+<div id="scanner">
+    <video id="video"></video> <!-- Video element for scanning -->
+  
+    <!-- Scanner frame for corners -->
+    <div class="scanner-frame">
+          <button id="close-button"><i class="ri-close-large-line"></i></button>
+        <div class="scanner-border top-left"></div>
+        <div class="scanner-border top-right"></div>
+        <div class="scanner-border bottom-left"></div>
+        <div class="scanner-border bottom-right"></div>
+    </div>
+</div>
+
+    <script >
+        
+let scannerClick = document.getElementById("scanner_click");
+
+// Add click event listener to the scanner button
+scannerClick.addEventListener("click", function () {
+
+let maindiv =document.getElementById("main")
+  const video = document.getElementById("video");
+  video.style.display = "block"; // Ensure the video element is visible
+  
+  // Hide overflow of the scanner button if necessary
+maindiv.style.display="none"
+
+  // Initialize the QR code reader
+  const codeReader = new ZXing.BrowserQRCodeReader();
+
+  // Start scanning from the camera
+  codeReader
+    .decodeFromInputVideoDevice(undefined, "video")
+    .then((result) => {
+      console.log(result);
+      alert("QR Code: " + result.text); // Show QR code result
+      video.style.display = "none"; // Hide the video element after scan
+      maindiv.style.display = "block";
+    })
+    .catch((err) => {
+      console.error(err);
+      alert("Error: " + err); // Display error for debugging
+    });
+
+  // Ensure the video plays (this might not work due to autoplay restrictions)
+  video.play().catch((error) => {
+    console.error("Video play failed:", error); // Log error if autoplay fails
+    
+
+
+  });
+
+});
+let maindiv = document.getElementById("main");
+let buttonClose = document.getElementById("close-button");
+      buttonClose.addEventListener("click", function () {
+       maindiv.style.display = "block";
+        console.log("close");
+      });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+/* Background styling */
+#main-send {
+  background: linear-gradient(to right, #1c1c1c, #3a3a3a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Stylish Card Container */
+.send-transaction-container {
+  width: 380px;
+  padding: 25px;
+  border-radius: 12px;
+  background: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+  color: rgba(255, 255, 255, 0.895)
+}
+
+.send-transaction-container:hover {
+  transform: scale(1.02);
+}
+
+.send-transaction-container h2 {
+  color: #f1f1f1;
+  margin-bottom: 18px;
+  font-size: 20px;
+}
+
+/* Input Fields */
+.input-send {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #444;
+  border-radius: 6px;
+  font-size: 16px;
+  background: #333;
+  color: #fff;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.input-send::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.input-send:focus {
+  border-color: #ff6600;
+  box-shadow: 0 0 8px rgba(255, 102, 0, 0.7);
+}
+
+/* Send Button */
+.button-send {
+  background: #ff6600;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 15px;
+  width: 100%;
+}
+
+.button-send:hover {
+  background: #e65c00;
+  box-shadow: 0 4px 12px rgba(255, 102, 0, 0.5);
+}
+
+.button-send:disabled {
+  background: #b34700;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Transaction Success or Error Message */
+.p-send {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #00ff7f;
+}
+
+/* Button Loading Animation */
+.button-send:disabled::after {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border: 3px solid white;
+  border-top-color: transparent;
+  border-radius: 50%;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: spin 0.8s linear infinite;
+}
+
+/* Keyframes for Loading Spinner */
+@keyframes spin {
+  0% {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}
