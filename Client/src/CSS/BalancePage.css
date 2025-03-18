@@ -1,0 +1,107 @@
+/* General page container */
+.balance-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #020202; /* Dark background for contrast */
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  flex-direction: column; /* Ensure elements stack vertically */
+}
+
+/* Balance Card - A wallet-like container */
+.balance-card {
+  background-color: #ffffff; /* White background */
+  border-radius: 20px; /* More rounded corners for a softer look */
+  padding: 40px;
+  width: 350px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Lighter, more diffused shadow for depth */
+  border: 1px solid #3498db; /* Subtle blue border */
+}
+
+/* Card Header - where logo resides */
+.card-header {
+  position: absolute;
+  top: 50%; /* Center the logo vertically */
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the logo horizontally */
+  z-index: 1; /* Ensure the logo stays in front but doesn't block the button */
+  opacity: 0.6; /* Slightly transparent logo */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+/* Logo inside the card */
+.card-header img {
+  width: 200px; /* Adjust the size of the logo */
+  opacity: 0.5; /* Slightly transparent logo */
+  transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+/* Logo hover effect */
+.card-header img:hover {
+  opacity: 1; /* Full opacity on hover */
+}
+
+/* Balance Container */
+.balance-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 25px; /* Spacing between balance and button */
+}
+
+/* Balance amount styling */
+.balance-amount {
+  font-size: 4rem; /* Large font for prominence */
+  font-weight: 600; /* Slightly lighter weight for a clean look */
+  color: #1E90FF; /* A vibrant, modern blue for the balance */
+  margin-bottom: 20px; /* Slightly more space below */
+  letter-spacing: 2px; /* Increased letter spacing for better readability */
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2); /* Subtle glowing effect with more contrast */
+  font-family: 'Montserrat', sans-serif; /* Clean, modern sans-serif font */
+  transition: transform 0.3s ease, color 0.3s ease; /* Smooth transform and color transitions */
+}
+
+/* Hover effect to enhance modern feel */
+.balance-amount:hover {
+  color: #00bfff; /* Light blue on hover for a vibrant effect */
+  transform: translateY(-5px); /* Slight lift effect on hover */
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* More intense shadow on hover */
+}
+
+/* Currency Label */
+.currency-label {
+  font-size: 1.2rem;
+  color: #7f8c8d; /* Soft gray for currency label */
+  font-weight: 600;
+  margin-bottom: 30px; /* Slightly more space below currency label */
+}
+
+/* Go Back Button */
+.back-button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px; /* Space the button below the card */
+  position: relative;
+  z-index: 2; /* Ensure button is clickable */
+}
+
+/* Hover effects for Go Back Button */
+.back-button:hover {
+  background-color: #2980b9;
+}
+.balance-description{
+    font-size: 20px;
+    color: black;
+    font-weight: 600;
+}

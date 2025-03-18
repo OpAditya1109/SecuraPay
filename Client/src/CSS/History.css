@@ -1,0 +1,144 @@
+/* General Page Styling */
+.history-container {
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #ffffff;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  transition: 0.3s ease;
+}
+
+.history-container:hover {
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Header Styling */
+.history-container h2 {
+  color: #4CAF50;
+  font-size: 28px;
+  margin-bottom: 15px;
+  border-bottom: 3px solid #4CAF50;
+  display: inline-block;
+  padding-bottom: 8px;
+  font-weight: 700;
+}
+
+/* Wallet Address */
+.wallet-address {
+  font-size: 20px;
+  font-weight: bold;
+  color: #007bff;
+  background: #f1f1f1;
+  padding: 15px;
+  border-radius: 8px;
+  display: inline-block;
+  margin-bottom: 25px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.wallet-address:hover {
+  background: #e1eaff;
+  transform: scale(1.02);
+}
+
+/* Transaction List */
+.transaction-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.transaction-list li {
+  background: #f9f9f9;
+  margin: 15px 0;
+  padding: 20px;
+  border-left: 8px solid #4CAF50; /* Default border color for sender */
+  border-radius: 8px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.transaction-list li:hover {
+  background: #f1f1f1;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Payment Label */
+.payment-label {
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 15px;
+  border-radius: 20px;
+  margin-top: 12px;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+.transaction-item.sender .payment-label {
+  background-color: #4CAF50; /* Green for Payment Sent */
+  color: white;
+}
+
+.transaction-item.recipient .payment-label {
+  background-color: #f44336; /* Red for Payment Received */
+  color: white;
+}
+
+/* Transaction Item: Sender and Recipient Styles */
+.transaction-item.sender {
+  border-left-color: #4CAF50; /* Green for sender */
+}
+
+.transaction-item.recipient {
+  border-left-color: #f44336; /* Red for recipient */
+}
+
+/* Transaction Details */
+.transaction-list p {
+  margin: 8px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+.transaction-list p strong {
+  color: #333;
+  font-weight: 600;
+}
+
+/* Loading Message */
+.loading-message {
+  font-size: 20px;
+  color: #888;
+  font-style: italic;
+}
+
+/* Error Message */
+.error-message {
+  color: #f44336;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 768px) {
+  .history-container {
+    padding: 20px;
+  }
+
+  .wallet-address {
+    font-size: 16px;
+  }
+
+  .transaction-list li {
+    padding: 15px;
+  }
+
+  .transaction-list p {
+    font-size: 16px;
+  }
+}

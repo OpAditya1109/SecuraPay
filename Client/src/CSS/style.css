@@ -1,0 +1,509 @@
+/*UTILITY CLASSES*/
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.pd {
+  padding: 1rem;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: "Montserrat", "Rubik", sans-serif;
+  color: #525252;
+}
+
+/*HEADER*/
+
+.header {
+  position: fixed;
+  z-index: 50;
+  width: 100%;
+  color: #fff;
+  background-color: #1973e8;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header__user {
+
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+}
+.header__user .photo {
+  background-color: #601229;
+  border: 0.2rem solid #fff;
+  border-radius: 100%;
+  width: 4rem;
+  margin-right: 1rem;
+}
+.header__user .info__username {
+  font-weight: 500;
+  margin-bottom: 0.4rem;
+}
+.header__option .option-icon {
+  font-size: 2rem;
+}
+
+.scanner_click {
+  width: 200px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  overflow: hidden; /* Ensures content doesn't overflow the container */
+}
+
+.scanner_click img {
+  width: 100%; /* Make the image fill the container's width */
+  height: auto; /* Maintain aspect ratio */
+  transform: scale(1.8); /* Scale up the image to make it appear larger */
+}
+/*MAIN*/
+
+.main {
+  position: fixed;
+  width: 100%;
+  margin-top: 6rem;
+  min-height: calc(100vh - 6rem);
+  background-color: #1973e8;
+  display: flex;
+  justify-content: center;
+}
+.main .tez {
+  position: absolute;
+  top: 20%;
+}
+.main .tez__circle {
+  width: 13rem;
+  height: 13rem;
+  margin-bottom: 2rem;
+  border: 1.5rem solid #1567d2;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main .tez__circle .tez-icon {
+  font-size: 2rem;
+  color: #667e8d;
+}
+.main .tez .tez__text {
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+}
+
+/*SLIDER*/
+
+.slider {
+  position: absolute;
+  z-index: 45;
+  top: 70%;
+  width: 100%;
+  padding: 2rem 1rem;
+  background-color: #fff;
+}
+.slider .logo-wrap {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  
+}
+.slider .logo-wrap__img {
+  position: relative;
+  width: 20rem;
+}
+
+
+#scanner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8); /* Darken the background */
+}
+
+#video {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* Ensure video covers the entire area */
+  position: absolute;
+  z-index: 1; /* Place video behind the scanner */
+}
+
+/* Scanning frame */
+.scanner-frame {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the element */
+  width: 300px; /* Adjust this to set the size of the scanner */
+  height: 300px; /* Adjust height as needed */
+  z-index: 2; /* Keep it above the video */
+}
+
+/* Corner borders */
+.scanner-border {
+  position: absolute;
+  width: 50px; /* Adjust this for the size of the borders */
+  height: 50px;
+  border: 10px solid; /* Border color */
+  z-index: 3;
+}
+
+.top-left {
+  top: 0;
+  left: 0;
+  border-bottom: none;
+  border-right: none;
+  border-color: red;
+}
+
+.top-right {
+  top: 0;
+  right: 0;
+  border-bottom: none;
+  border-left: none;
+  border-color: yellow;
+}
+
+.bottom-left {
+  bottom: 0;
+  left: 0;
+  border-top: none;
+  border-right: none;
+  border-color: green;
+}
+
+.bottom-right {
+  bottom: 0;
+  right: 0;
+  border-top: none;
+  border-left: none;
+  border-color: blue;
+}
+#close-button {
+  height: 40px;
+  width: 40px;
+  background-color: white;
+  position: fixed;
+  z-index: 10000;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+}
+
+#main {
+  height: 100%;
+  width: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+#container {
+  height: 100%;
+  width: 100%;
+}
+
+.qr-result {
+  background-color: #ffcc00; /* Yellow background for attention */
+  color: #fff; /* White text color */
+  padding: 15px; /* Add some padding for spacing */
+  border-radius: 5px; /* Rounded corners */
+  font-size: 16px; /* Set font size */
+  font-weight: bold; /* Make text bold */
+  text-align: center; /* Center-align the text */
+  position: fixed; /* Make it fixed on the screen */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Adjust positioning to center exactly */
+  z-index: 1000; /* Ensure it appears above other content */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow for better visibility */
+  transition: opacity 0.3s ease-in-out; /* Smooth transition for fading effect */
+  width: 90%;
+}
+
+/* Optional: To make it disappear after some time */
+.qr-result.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.check-bal{
+background-color: red;
+}
+
+
+
+
+
+
+
+
+
+/* Add this to your existing CSS file */
+
+/* For positioning the wallet address on the right */
+.info__container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+}
+
+.info__wallet-box {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  margin-top: 10px;
+  width: 455px; /* Increased width */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  height: 50px; /* Fixed height */
+  display: flex; /* Aligns content */
+  align-items: center; /* Centers content vertically */
+  justify-content: space-between; /* Spaces out content */
+  gap: 10px; /* Adds spacing */
+  overflow: hidden; /* Prevents overflow */
+  white-space: nowrap; /* Ensures address stays in one line */
+  padding: 0 10px; /* Adds some padding */
+}
+
+.info__wallet-content {
+  display: flex;
+  align-items: center; /* Ensures label & address are in one line */
+  flex: 1; /* Takes up available space */
+  gap: 5px; /* Adds spacing between label & address */
+  overflow: hidden;
+}
+
+.info__wallet-label {
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  flex-shrink: 0; /* Prevents shrinking */
+}
+
+.info__wallet-address {
+  font-size: 15px;
+  color: #555;
+  overflow: hidden; /* Ensures text doesn't overflow */
+  text-overflow: ellipsis; /* Adds "..." when text overflows */
+  white-space: nowrap; /* Prevents line breaks */
+  flex: 1; /* Takes up remaining space */
+}
+
+.copy-icon img {
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+}
+
+.copy-icon {
+  background-color: transparent;
+}
+
+
+
+
+
+
+
+/* Button Container */
+/* Container for buttons */
+/* Button Container */
+.option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px; /* Space between buttons */
+}
+
+/* Button Styling */
+.option__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3498db; /* Bright blue background */
+  color: #000000; /* White icon and text */
+  font-size: 1.8rem;
+  padding: 15px 30px;
+  border-radius: 50px; /* Rounded edges */
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out; /* Smooth transition for all properties */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  position: relative;
+  text-transform: uppercase; /* Capitalize text for better visual appeal */
+  letter-spacing: 1px;
+  overflow: hidden; /* Ensure the shape stays clean */
+}
+
+/* Image Style */
+.option__icon img {
+  width: 1.8rem; /* Set the image size */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 10px; /* Space between image and text */
+  transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for transform and opacity */
+ 
+}
+
+/* Button Hover Effect */
+.option__icon:hover {
+  background-color: #4659B5; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight scaling effect */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); /* Increased shadow depth */
+}
+
+/* Image Hover Effect */
+.option__icon:hover img {
+  transform: rotate(20deg); /* Rotate the image on hover */
+  opacity: 0.8; /* Slight transparency effect */
+
+}
+
+/* Button Text Styling */
+.option__icon span {
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  transition: transform 0.2s ease, color 0.3s ease;
+}
+
+/* Button Text Hover Effect */
+.option__icon:hover span {
+  color: #fff; /* Change text color to white */
+  transform: translateX(10px); /* Move text slightly to the right */
+}
+
+/* Animated Hover Effect (Button border) */
+.option__icon:before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 300%;
+  height: 300%;
+  background-color: #fff;
+  border-radius: 50%;
+  transition: width 0.4s ease, height 0.4s ease, top 0.4s ease, left 0.4s ease; /* Smooth border expansion */
+  z-index: 0;
+  transform: translate(-50%, -50%);
+}
+
+/* Hover border expansion */
+.option__icon:hover:before {
+  width: 0;
+  height: 0;
+  top: 50%;
+  left: 50%;
+}
+
+/* Button Text on top of expanding border */
+.option__icon span {
+  z-index: 1;
+}
+
+
+
+
+
+.actions__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+
+}
+
+.action-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  margin: 0 15px;
+  transition: transform 0.3s ease;
+}
+
+.action-item:hover {
+  transform: translateY(-5px);
+}
+
+.action-item__btn {
+  background: linear-gradient(135deg, #ffffff, #ffffff); /* Apply gradient here */
+  border: none;
+  padding: 15px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s, background 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #4659B5;
+}
+
+.action-item__btn:hover {
+  background: linear-gradient(200deg, #3DBDF1, #EA5777); /* Reverse the gradient on hover */
+  transform: scale(1.1);
+}
+
+.action-item__icon {
+  width: 30px;
+  height: 30px;
+  transition: transform 0.3s ease;
+  image-rendering: smooth; /* Ensure sharp image scaling */
+}
+
+.action-item__btn:hover .action-item__icon {
+  transform: rotate(15deg);
+}
+
+.action-item__label {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+  transition: color 0.3s ease;
+}
+
+.action-item__btn:hover + .action-item__label {
+  color: #4682b4;
+}
+
+.action-item__btn:focus {
+  outline: none;
+}
+
+
